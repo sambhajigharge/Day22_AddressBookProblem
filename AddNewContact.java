@@ -7,9 +7,10 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class AddNewContact {
+
     Scanner sc = new Scanner(System.in);
     List<Contact> contacts = new ArrayList<Contact>();
-    Map<String, AddNewContact> addressBook = new HashMap<>();
+    Map<String, AddNewContact> adddressBook = new HashMap<>();
     Contact contact = new Contact();
 
     /**
@@ -21,8 +22,10 @@ public class AddNewContact {
         for (Contact person : contacts) {
             if (person.getFirstName().equals(name)) {
                 System.out.println("Given Name is already Exists");
+                return;
             }
         }
+        addContact();
     }
 
     /*
@@ -37,12 +40,11 @@ public class AddNewContact {
         }
     }
 
-    /**
-     * Method to add new contact to Contact list
-     * set the value of contact details in list
-     * <p>
-     * // @param contacts - contact details
-     */
+//     * Method to add new contact to Contact list
+//     * set the value of contact details in list
+//     *
+//     * @param contacts - contact details
+
     public void addContact() {
         Contact person = new Contact();
         Scanner sc = new Scanner(System.in);
@@ -234,5 +236,4 @@ public class AddNewContact {
         contacts.remove(contact);
         System.out.println("The contact has been deleted from the Address Book");
     }
-
 }

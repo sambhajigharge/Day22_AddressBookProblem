@@ -8,6 +8,11 @@ public class AddressBookMain {
         Scanner sc = new Scanner(System.in);
 
         /**
+         * creating object of AddNewContact
+         */
+        AddNewContact addNew = new AddNewContact();
+
+        /**
          * creating object of UniqueMultipleAddressBook for adding Unique name address book
          */
         UniqueMultipleAddressBook unique = new UniqueMultipleAddressBook();
@@ -20,7 +25,9 @@ public class AddressBookMain {
                     + "5. Delete the AddressBook \n "
                     + "6. Print the AddressBook \n "
                     + "7. Print the contacts \n "
-                    + "8. Exit");
+                    + "8. Search By city \n "
+                    + "9. Search By state \n "
+                    + "0. Exit");
             int choice = sc.nextInt();
             switch (choice) {
 
@@ -47,7 +54,14 @@ public class AddressBookMain {
                     break;
                 case 7:
                     unique.printContacts();
+                    break;
                 case 8:
+                    unique.searchByCity();
+                    break;
+                case 9:
+                    unique.searchByState();
+                    break;
+                case 0:
                     System.exit(8);
                     break;
                 default:
