@@ -10,13 +10,13 @@ public class UniqueMultipleAddressBook {
     public void addAddress() {
         System.out.println("Enter New Address book name :");
         Scanner sc = new Scanner(System.in);
-        String bookname = sc.next();
-        if (addressMap.containsKey(bookname)) {
+        String bookName = sc.next();
+        if (addressMap.containsKey(bookName)) {
             System.out.println("Address book with given name is exist. Please enter new Name ");
             addAddress();
         } else {
             AddNewContact addNewContact = new AddNewContact();
-            addressMap.put(bookname, addNewContact);
+            addressMap.put(bookName, addNewContact);
             System.out.println("Address Book Successfully Added");
         }
         sc.close();

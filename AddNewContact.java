@@ -8,10 +8,9 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class AddNewContact {
-
     Scanner sc = new Scanner(System.in);
     List<Contact> contacts = new ArrayList<Contact>();
-    Map<String, AddNewContact> addressBook = new HashMap<>();
+    Map<String, AddNewContact> adddressBook = new HashMap<>();
     public static HashMap<String, ArrayList<Contact>> personByCity = new HashMap<String, ArrayList<Contact>>();
     public static HashMap<String, ArrayList<Contact>> personByState = new HashMap<String, ArrayList<Contact>>();
     Contact contact = new Contact();
@@ -43,8 +42,9 @@ public class AddNewContact {
         }
     }
 
-//     * Method to add new contact to Contact list
-//     * set the value of contact details in list
+//     * Method to add new contact to Contact list set the value of contact details in
+//     * list
+//     *
 //     * @param contacts - contact details
 
     public void addContact() {
@@ -89,8 +89,8 @@ public class AddNewContact {
     }
 
     /**
-     * Method to find contact with given name
-     * if multiple contact found with same given name then find contact with name and email
+     * Method to find contact with given name if multiple contact found with same
+     * given name then find contact with name and email
      *
      * @return - contact
      */
@@ -101,7 +101,7 @@ public class AddNewContact {
         Contact temp = null;
         for (Contact cont : contacts) {
             if (cont.getFirstName().equals(name)) {
-                duplicate++; //if contact found then increment
+                duplicate++; // if contact found then increment
                 temp = cont;
             }
         }
@@ -112,7 +112,8 @@ public class AddNewContact {
             return temp;
         }
         /**
-         * else if duplicate is more than 1 then multiple contact with same name so find with first name and email also
+         * else if duplicate is more than 1 then multiple contact with same name so find
+         * with first name and email also
          */
         else if (duplicate > 1) {
             System.out.println("Multiple contacts found with given name..please enter Email to find contact : ");
@@ -141,15 +142,9 @@ public class AddNewContact {
      */
     public void editContact() {
         Contact contact = findContact();
-        System.out.println("Enter your choice to edit: "
-                + "\n 1.Edit first name"
-                + "\n 2.Edit last name"
-                + "\n 3.Edit address"
-                + "\n 4.Edit city"
-                + "\n 5.Edit state"
-                + "\n 6.Edit zipcode"
-                + "\n 7.Edit phone number"
-                + "\n 8.Edit email");
+        System.out.println("Enter your choice to edit: " + "\n 1.Edit first name" + "\n 2.Edit last name"
+                + "\n 3.Edit address" + "\n 4.Edit city" + "\n 5.Edit state" + "\n 6.Edit zipcode"
+                + "\n 7.Edit phone number" + "\n 8.Edit email");
         int choice = sc.nextInt();
         switch (choice) {
             case 1:
@@ -186,7 +181,6 @@ public class AddNewContact {
                 contact.setState(newState);
                 System.out.println("New State Updated");
                 break;
-
 
             case 6:
                 System.out.println("Enter new zip Code");
@@ -239,9 +233,8 @@ public class AddNewContact {
         System.out.println("The contact has been deleted from the Address Book");
     }
 
-
     /**
-     * Method to check the person  by city
+     * Method to check the person by city
      */
     public void viewPersonByCity(Contact contact) {
         if (personByCity.containsKey(contact.getCity())) {
@@ -269,8 +262,8 @@ public class AddNewContact {
     }
 
     /**
-     * Method to sort the entries in the address book alphabetically by Person’s name
-     * used java streams to sort the list
+     * Method to sort the entries in the address book alphabetically by Person’s
+     * name used java streams to sort the list
      */
     public void sortByName() {
         List<Contact> list = contacts.stream().collect(Collectors.toList());
@@ -278,5 +271,14 @@ public class AddNewContact {
                 .forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName()));
     }
 
+    /**
+     * Method to sort the entries in the address book alphabetically by city used
+     * java streams to sort the list
+     */
+    public void sortByCity() {
+        List<Contact> list = contacts.stream().collect(Collectors.toList());
+        list.stream().sorted((g1, g2) -> ((String) g1.getCity()).compareTo(g2.getCity()))
+                .forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName()));
+    }
 }
 
