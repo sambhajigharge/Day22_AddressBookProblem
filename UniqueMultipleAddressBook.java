@@ -1,26 +1,22 @@
 package AddressBookByCollection;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class UniqueMultipleAddressBook {
-    /**
-     * Hashmap to add multiple address book
-     */
     Map<String, AddNewContact> addressMap = new HashMap<>();
+    List<Contact> contacts = new ArrayList<Contact>();
+    Scanner sc = new Scanner(System.in);
 
     public void addAddress() {
         System.out.println("Enter New Address book name :");
         Scanner sc = new Scanner(System.in);
-        String bookName = sc.next();
-        if (addressMap.containsKey(bookName)) {
+        String bookname = sc.next();
+        if (addressMap.containsKey(bookname)) {
             System.out.println("Address book with given name is exist. Please enter new Name ");
             addAddress();
         } else {
             AddNewContact addNewContact = new AddNewContact();
-            addressMap.put(bookName, addNewContact);
+            addressMap.put(bookname, addNewContact);
             System.out.println("Address Book Successfully Added");
         }
         sc.close();
@@ -114,9 +110,11 @@ public class UniqueMultipleAddressBook {
         System.out.println(" ");
     }
 
+    /**
+     * Search personin contact by city Name
+     */
     public void searchByCity() {
         System.out.println("Enter the name of the City to search the persons : ");
-        Scanner sc = new Scanner(System.in);
         String cityName = sc.next();
         for (String i : addressMap.keySet()) {
             List<Contact> arr = addressMap.get(i).contacts;
@@ -130,7 +128,6 @@ public class UniqueMultipleAddressBook {
     public void searchByState() {
 
         System.out.println("Enter the name of the State to Search persons : ");
-        Scanner sc = new Scanner(System.in);
         String stateName = sc.next();
         for (String i : addressMap.keySet()) {
             List<Contact> arr = addressMap.get(i).contacts;
@@ -138,4 +135,18 @@ public class UniqueMultipleAddressBook {
         }
     }
 
+    /**
+     * View person by city or state
+     */
+    public void viewPerson(HashMap<String, ArrayList<Contact>> addressMap) {
+        List<Contact> contacts;
+        for (String name : addressMap.keySet()) {
+            System.out.println("People residing in: " + name);
+            contacts = addressMap.get(name);
+            for (Contact contact : contacts) {
+                System.out.println(contact);
+            }
+        }
+
+    }
 }

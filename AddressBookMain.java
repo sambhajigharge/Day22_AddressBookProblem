@@ -27,6 +27,8 @@ public class AddressBookMain {
                     + "7. Print the contacts \n "
                     + "8. Search By city \n "
                     + "9. Search By state \n "
+                    + "10. View Person By City \n "
+                    + "11. view Person By state \n "
                     + "0. Exit");
             int choice = sc.nextInt();
             switch (choice) {
@@ -60,6 +62,12 @@ public class AddressBookMain {
                     break;
                 case 9:
                     unique.searchByState();
+                    break;
+                case 10:
+                    unique.viewPerson(AddNewContact.personByCity);
+                    break;
+                case 11:
+                    unique.viewPerson(AddNewContact.personByState);
                     break;
                 case 0:
                     System.exit(8);
