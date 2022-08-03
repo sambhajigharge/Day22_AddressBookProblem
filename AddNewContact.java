@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class AddNewContact {
 
+
     Scanner sc = new Scanner(System.in);
     List<Contact> contacts = new ArrayList<Contact>();
     Map<String, AddNewContact> adddressBook = new HashMap<>();
@@ -42,9 +43,6 @@ public class AddNewContact {
         }
     }
 
-//     * Method to add new contact to Contact list
-//     * set the value of contact details in list
-//     * @param contacts - contact details
 
     public void addContact() {
         Contact person = new Contact();

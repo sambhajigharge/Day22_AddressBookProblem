@@ -149,4 +149,17 @@ public class UniqueMultipleAddressBook {
         }
 
     }
+
+    /*
+     * Method to count People living in city or state
+     */
+    public void countPeople(HashMap<String, ArrayList<Contact>> list) {
+        System.out.println("Enter name ");
+        String result = sc.next();
+        long count = list.values().stream()
+                .map(region -> region.stream().filter(person -> person.getState().equals(result) || person.getCity().equals(result)))
+                .count();
+
+        System.out.println("Number of people living in " + result + "are : " + count);
+    }
 }

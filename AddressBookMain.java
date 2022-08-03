@@ -29,6 +29,7 @@ public class AddressBookMain {
                     + "9. Search By state \n "
                     + "10. View Person By City \n "
                     + "11. view Person By state \n "
+                    + "12. Count people \n "
                     + "0. Exit");
             int choice = sc.nextInt();
             switch (choice) {
@@ -69,6 +70,16 @@ public class AddressBookMain {
                 case 11:
                     unique.viewPerson(AddNewContact.personByState);
                     break;
+
+                case 12:
+                    System.out.println("Enter \n1.Count By City \n2. Count By state");
+                    int num = sc.nextInt();
+                    if (num == 1)
+                        unique.countPeople(AddNewContact.personByCity);
+                    else
+                        unique.countPeople(AddNewContact.personByState);
+                    break;
+
                 case 0:
                     System.exit(8);
                     break;
