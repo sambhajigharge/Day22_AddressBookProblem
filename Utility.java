@@ -208,6 +208,7 @@ public class Utility {
         }
     }
 
+    
     private void deleteContact(ArrayList<Utility> contactList) {
         System.out.println("Enter the first name of the contact you wish to delete");
         String delete = userInput.next();
