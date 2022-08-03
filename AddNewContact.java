@@ -5,13 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class AddNewContact {
 
-
     Scanner sc = new Scanner(System.in);
     List<Contact> contacts = new ArrayList<Contact>();
-    Map<String, AddNewContact> adddressBook = new HashMap<>();
+    Map<String, AddNewContact> addressBook = new HashMap<>();
     public static HashMap<String, ArrayList<Contact>> personByCity = new HashMap<String, ArrayList<Contact>>();
     public static HashMap<String, ArrayList<Contact>> personByState = new HashMap<String, ArrayList<Contact>>();
     Contact contact = new Contact();
@@ -43,6 +43,9 @@ public class AddNewContact {
         }
     }
 
+//     * Method to add new contact to Contact list
+//     * set the value of contact details in list
+//     * @param contacts - contact details
 
     public void addContact() {
         Contact person = new Contact();
@@ -263,6 +266,16 @@ public class AddNewContact {
             stateList.add(contact);
             personByState.put(contact.getState(), stateList);
         }
+    }
+
+    /**
+     * Method to sort the entries in the address book alphabetically by Person’s name
+     * used java streams to sort the list
+     */
+    public void sortByName() {
+        List<Contact> list = contacts.stream().collect(Collectors.toList());
+        list.stream().sorted((g1, g2) -> ((String) g1.getFirstName()).compareTo(g2.getFirstName()))
+                .forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName()));
     }
 
 }
