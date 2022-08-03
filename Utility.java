@@ -200,11 +200,18 @@ public class Utility {
                 case 0 -> contactDetails(null, contactList);
                 case 1 -> editContact();
                 case 2 -> display(contactList);
+                case 3 -> deleteContact(contactList);
             }
             if (option == 6) {
                 break;
             }
         }
+    }
+
+    private void deleteContact(ArrayList<Utility> contactList) {
+        System.out.println("Enter the first name of the contact you wish to delete");
+        String delete = userInput.next();
+        contactList.removeIf(contact -> contact.firstName.equals(delete));
     }
 
     public void display(ArrayList<Utility> contactList)//Display Address book
